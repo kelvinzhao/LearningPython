@@ -106,8 +106,8 @@ print(first)
 # continue
 
 
-class Person():
-    pass
+# class Person():
+#     pass
 
 
 person = Person()
