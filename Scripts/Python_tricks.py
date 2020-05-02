@@ -53,4 +53,74 @@ heroes = ['Spiderman', 'Superman', 'Deadpool', 'Batman']
 for name, hero in zip(names, heroes):
     print(f'{name} is actually {hero}')
 
+# zip and unpack(tuple)
+for value in zip(names, heroes):  # zip
+    print(value)  # unpack
+
+# %%
+# Unpacking
+a, _ = (1, 2)
+print(a)
+
+a, b, *c = (1, 2, 3, 4, 5)
+print(a)
+print(b)
+print(c)
+
+a, b, *_ = (1, 2, 3, 4, 5)
+print(a)
+print(b)
+
+a, b, *c, d = (1, 2, 3, 4, 5)
+print(a)
+print(b)
+print(c)
+print(d)
+
+# %%
+# Setattr/Getattr
+# 通过变量指定增加属性
+
+
+class Person():
+    pass
+
+
+person = Person()
+
+# person.first = "Corney"
+# person.last ="Schafer"
+# print(person.first)
+# print(person.last)
+
+first_key = 'first'
+first_val = 'Corney'
+
+setattr(person, first_key, 'Corney')
+first = getattr(person, first_key)
+
+print(person.first)
+print(first)
+
+# %%
+# continue
+
+
+class Person():
+    pass
+
+
+person = Person()
+person_info = {'first': 'Corney', 'last': 'Schafer'}
+
+for key, value in person_info.items():
+    setattr(person, key, value)
+
+# print(person.first)
+# print(person.last)
+for key in person_info.keys():
+    # print(person.__getattribute__(key)) # 这样行吗？
+    print(getattr(person, key))
+
+
 # %%
