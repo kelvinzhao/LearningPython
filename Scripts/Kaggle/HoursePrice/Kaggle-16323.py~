@@ -48,7 +48,7 @@ def random_trainer(in_X, in_y):
 
 # %%
 # Path of the file to read. We changed the directory structure to simplify submitting to a competition
-iowa_file_path = os.path.dirname(__file__) + 'train.csv'
+iowa_file_path = os.path.dirname(__file__) + '/train.csv'
 
 home_data = pd.read_csv(iowa_file_path)
 home_data = home_data.fillna(method='ffill')
@@ -105,7 +105,7 @@ print(
 # use best random forest model to generate submission.csv file.
 #
 # path to file you will use for predictions
-test_data_path = os.path.dirname(__file__) + 'test.csv'
+test_data_path = os.path.dirname(__file__) + '/test.csv'
 
 # read test data file using pandas
 test_data = pd.read_csv(test_data_path)
@@ -116,7 +116,7 @@ test_X = test_data[features]
 
 
 # make predictions which we will submit.
-# test_preds = rf_model_on_full_data.predict(test_X)
+#test_preds = rf_model_on_full_data.predict(test_X)
 test_model = random_trainer(X, y)
 test_preds = test_model.predict(test_X)
 
