@@ -1,2 +1,2 @@
 # LearningPython
- My Python learning project
+My Python learning project

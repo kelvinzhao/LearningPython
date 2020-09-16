@@ -1,5 +1,5 @@
-# Given a string, find the first non-repeating character in it and return its index.
-# If it doesn't exist, return -1.
+# Given a string, find the first non-repeating character in it and return its
+# index. it doesn't exist, return -1.
 # Note: all the input strings are already lowercase.
 
 import collections
@@ -46,11 +46,12 @@ print(solution2('barbados'))
 print(solution2('crunchy'))
 
 
-# Also in this case, two potential solutions are provided and I guess that, if you are pretty new
-# to algorithms, the first approach looks a bit more familiar as it builds as simple counter
-# starting from an empty dictionary.
+# Also in this case, two potential solutions are provided and I guess that, if
+# you are pretty new algorithms, the first approach looks a bit more familiar as
+# it builds as simple counter from an empty dictionary.
 
-# However understanding the second approach will help you much more in the longer term and this is
-# because in this algorithm I simply used collection.Counter(s)instead of building a chars counter
-# myself and replaced range(len(s)) with enumerate(s), a function that can help you identify the
+# However understanding the second approach will help you much more in the
+# longer term and this is because in this algorithm I simply used
+# collection.Counter(s)instead of building a chars counter myself and replaced
+# range(len(s)) with enumerate(s), a function that can help you identify the
 # index more elegantly.

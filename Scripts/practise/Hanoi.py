@@ -4,23 +4,22 @@
 再将第disk盘从原位置移动到目标位，最后将第disk-1盘从辅助位移动到目标位
 实际上在递归过程中，A、B、C是轮番成为原位置、目标位和辅助位的。
 '''
-__all__ = ['move']
 
 
-def move(disk: int, _from: str, _pass: str, _target: str,
+def hmove(disk: int, _from: str, _pass: str, _target: str,
          counts: int = 0) -> int:
     if disk == 1:
         counts += 1
         print("Step ", counts, " : move disk ",
               disk, ' from ', _from, ' to ', _target)
     else:
-        counts = move(disk-1, _from, _target, _pass, counts)
+        counts = hmove(disk-1, _from, _target, _pass, counts)
         counts += 1
         print("Step ", counts, " : move disk ",
               disk, ' from ', _from, ' to ', _target)
-        counts = move(disk-1, _pass, _from, _target, counts)
+        counts = hmove(disk-1, _pass, _from, _target, counts)
     return counts
 
 
 if __name__ == '__main__':
-    print('Total : ',  move(10, 'A', 'B', 'C'))
+    print('Total : ',  hmove(4, 'A', 'B', 'C'))

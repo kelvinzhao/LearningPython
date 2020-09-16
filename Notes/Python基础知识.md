@@ -151,7 +151,7 @@ except:
 print('Done', istr)
 ```
 
-## def 
+## def
 
 ```python
 def greet(lang):
@@ -307,7 +307,7 @@ print (para_str)
 这是一个多行字符串的实例
 多行字符串可以使用制表符
 TAB (    )。
-也可以使用换行符 [ 
+也可以使用换行符 [
  ]。
 ```
 
@@ -486,3 +486,4 @@ False
 4. 清空集合
 `s.clear()`
 
+![lalal](./image_2020-08-25-21-50-29.png)
