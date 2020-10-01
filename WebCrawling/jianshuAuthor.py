@@ -13,7 +13,7 @@ def getJSHTMLText(url, cookies, useragent):
     try:
         r = requests.get(url, timeout=30, headers=headers, cookies=cookies)
         r.raise_for_status()
-        print(url + ' ' + str(r.status_code))
+        # print(url + ' ' + str(r.status_code))
         r.encoding = r.apparent_encoding
         return r.text
     except Exception:
@@ -34,6 +34,14 @@ def getResultList(ilt, html):
     _name = soup.find('div', attrs={'class': 'title'})('a')[0].string
     _list = soup.find_all('div', attrs={'class': 'meta-block'})
     _infolist = []
+    """
+    <div class="meta-block">
+        <a href="/users/51b4ef597b53/following">
+            <p>11</p>
+            关注 <i class="iconfont ic-arrow"></i>
+        </a>
+    </div>
+    """
     for item in _list:
         _infolist.append(item('p')[0].string)
     ilt[_name] = _infolist
@@ -84,12 +92,16 @@ def main():
             print('error in getAuthorURLList')
     # step2 循环列表，获得作者主页html text，爬取作者信息，包括关注、粉丝、文章、
     # 字数、收获喜欢、总资产等信息
+    count = 0
     for url in authorURLList:
         try:
             html = getJSHTMLText(url, cookies, useragent)
             getResultList(resultDict, html)
+            count += 1
+            print('\r当前进度：{:.2f}%'.format(count*100/len(authorURLList)), end='')
         except Exception:
             print('error in getResultList')
+    print('')
     # step3 输出结果列表
     printResult(resultDict)
     resultValue = [["姓名", "关注", "粉丝", "文章", "字数", "喜欢", "资产"]]

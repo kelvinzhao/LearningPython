@@ -92,6 +92,7 @@ if __name__ == '__main__':
 
     # step2 循环列表，获得作者主页html text，爬取作者信息，包括关注、粉丝、文章、
     # 字数、收获喜欢、总资产等信息
+    # 这里进程数为1，因为多了简书会返回429错误，“温和”的劝退
     pool = multiprocessing.Pool(1)
     resultList = pool.map(getResultList, authorURLList)
 
