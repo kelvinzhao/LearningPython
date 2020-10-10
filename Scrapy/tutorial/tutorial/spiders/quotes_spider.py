@@ -16,7 +16,7 @@ class QuotesSpider(scrapy.Spider):
 # 'start_requests' is default method that Scrapy generates 'scrapy.Request'
 # objects from URLs, and 'start_urls' class attribute is the default URLs list.
 # and 'parse' is default callback method.
-# so above codes can be simplized as below.
+# so 'start_request()' can be simplized as below.
 #
 #     name = "quotes"
 #     start_urls = [
