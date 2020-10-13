@@ -1,4 +1,4 @@
 #!/bin/zsh
 
-cd /Users/jianglongzhao/Documents/GitHub/LearningPython/Scrapy/weibohot
+cd /home/jerrowolf/Github/LearningPython/Scrapy/weibohot
 scrapy crawl hot
