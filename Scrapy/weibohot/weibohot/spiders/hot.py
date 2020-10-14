@@ -8,9 +8,9 @@ class HotSpider(scrapy.Spider):
 
     def parse(self, response):
         for hid, hotword, redu in zip(
-                range(0, 51),
-                response.css("tbody * a::text").getall(),
-                response.css("tbody * span::text").getall(),
+                range(1, 51),
+                response.css("td.td-01.ranktop + td.td-02 a:not([href_to])::text").getall(),
+                response.css("td.td-01.ranktop + td.td-02 a:not([href_to]) + span::text").getall(),
                 ):
             yield {
                     'hid': hid,
