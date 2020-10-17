@@ -28,11 +28,12 @@ class WeibohotPipeline:
         self.sheet.append(['排名', '热搜', '热度'])
 
     def close_spider(self, spider):
+        self.wb.save(self.filename)
         isFileExist = os.path.isfile(checkFile)
         if isFileExist:
             os.remove(checkFile)
 
     def process_item(self, item, spider):
         self.sheet.append([item['hid'], item['hotword'], item['redu']])
-        self.wb.save(self.filename)
+        # self.wb.save(self.filename)
         return item
