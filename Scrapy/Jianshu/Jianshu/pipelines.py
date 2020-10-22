@@ -13,15 +13,13 @@ import openpyxl
 class JianshuAuthorPipeline:
 
     def open_spider(self, spider):
-        # self.file = open("jianshuauthor.jl", "w")
         self.workbook = openpyxl.Workbook()
         self.sheet = self.workbook.active
         self.sheet.append(["姓名", "关注", "粉丝", "文章", "字数", "喜欢", "资产"])
+        self.workbook.save("jianshuAuthor.xlsx")
 
     def close_spider(self, spider):
-        # self.file.close()
-        # self.workbook.save("jianshuAuthor.xlsx")
-        pass
+        self.workbook.save("jianshuAuthor.xlsx")
 
     def process_item(self, item, spider):
         line = [
@@ -34,5 +32,4 @@ class JianshuAuthorPipeline:
                 item['rewards']
                 ]
         self.sheet.append(line)
-        self.workbook.save("jianshuAuthor.xlsx")
         return item

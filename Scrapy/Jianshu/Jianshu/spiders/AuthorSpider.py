@@ -1,4 +1,5 @@
 import scrapy
+from itemloaders.processors import MapCompose
 
 
 class AuthorspiderSpider(scrapy.Spider):
@@ -14,7 +15,7 @@ class AuthorspiderSpider(scrapy.Spider):
     # headers['user-agent'] = r"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6)"
 
     def start_requests(self):
-        pageCount = 10
+        pageCount = 2
         for pageID in range(pageCount):
             url = 'https://www.jianshu.com/recommendations/users?page=' + \
                     str(pageID + 1)
@@ -22,7 +23,9 @@ class AuthorspiderSpider(scrapy.Spider):
 
     def parse(self, response):
         # parse response to get author list
-        yield from response.follow_all(css='div.wrap > a', callback=self.parse_author)
+        urls = MapCompose(lambda i: str.replace(i, "users", "u"))(response.css('div.wrap > a::attr(href)').getall())
+        yield from response.follow_all(urls, callback=self.parse_author)
+        # yield from response.follow_all(css='div.wrap > a', callback=self.parse_author)
 
     def parse_author(self, response):
         authorinfo = response.css("div.info * p::text").getall()
